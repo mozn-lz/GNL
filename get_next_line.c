@@ -15,28 +15,44 @@
 #include <time.h>
 #include <fcntl.h>
 #include <stdio.h>
+/*
+char	strfintr(const char *s, char c)
+{
+	char	*sret;
+	int		i;
+
+	i = 0;
+	if()
+	return (sret)
+}
+*/
 
 int			get_next_line(const int fd, char **line)
 {
 	char	*buff;
 	int		str_sz;
-	int		i;
+	int		i, j;
 
 	buff = ft_memalloc(BUFF_SIZE);
-	i = 0;
 	str_sz = BUFF_SIZE;
 	while (BUFF_SIZE == str_sz)
 	{
+		i = 0;
+	j = 1;
 		str_sz = read(fd, buff, BUFF_SIZE);
-//		i = ft_strlen(buff) - 1;
-		if (buff[ft_strlen(buff) -1] == '\0')
+		while (buff[i])
 		{
-			ft_bzero((void*)buff, ft_strlen(buff));
-			break ;
+			if (buff[i] == '\n' )
+			{
+				buff[i] = '\0';
+				ft_putchar('\n');
+			}
+			i++;
+			ft_putnbr(j++);
+				ft_putchar(',');
+				ft_putchar('\n');
 		}
 		ft_putstr(buff);
-//		ft_strncat(line,buff, str_sz);
-		i++;
 	}
 	ft_putchar('\n');
 	return (0);

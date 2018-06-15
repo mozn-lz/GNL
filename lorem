@@ -1,10 +1,28 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce consequat dui vel mattis vestibulum. In arcu purus, finibus eu fringilla et, lacinia quis turpis. Mauris eu velit eu diam fringilla vulputate vitae quis lorem. Praesent suscipit orci vel justo rhoncus sodales. Ut consequat luctus purus convallis porttitor. Suspendisse aliquet gravida arcu vitae rhoncus. Nulla pharetra, leo sit amet lobortis rhoncus, eros ipsum ultrices lectus, quis sagittis turpis ante eget quam. Vivamus condimentum massa arcu, et accumsan velit dictum quis.
+Navigation
+Within the text of most pages, there are usually a large number of hypertext links to other pages within the wiki. Wikis can provide one or more ways to categorize or tag pages to support the maintenance of such index pages. Some wikis, including the original, have a backlink feature, which displays all pages that link to a given page. It is also typically possible in a wiki to create links to pages that do not yet exist, as a way to invite others to share what they know about a subject new to the wiki.
 
-Vivamus lobortis magna eget velit sodales, et volutpat risus pellentesque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis semper nunc ornare nibh convallis condimentum. Nam semper arcu sed odio lobortis convallis. Curabitur tristique est dui, mattis laoreet velit pulvinar eget. In molestie velit ac eleifend rutrum. Pellentesque ac ex est. Etiam efficitur orci sit amet tellus fringilla, semper dictum mauris lobortis. Maecenas imperdiet quam mollis nisl luctus, vitae volutpat ex venenatis. Curabitur congue purus ligula. Phasellus accumsan diam massa, sed semper justo mollis nec. Nullam in lacinia diam. Curabitur convallis urna non est iaculis pulvinar. Nullam ex odio, rhoncus quis ipsum at, hendrerit ullamcorper orci. Ut congue tortor at mi feugiat bibendum.
+Linking and creating pages
+Links are created using a specific syntax, the so-called link pattern.
+Originally, most wikis[citation needed] used 
+CamelCase to name pages and create links. These are produced by 
+capitalizing words in a phrase and removing the spaces between them (the word CamelCase is itself an example). While CamelCase makes linking easy, it also leads to links in a form that deviates
+from the standard spelling. To link to a page with a single-word title, one must abnormally capitalize one of the letters in the word (e.g. WiKi instead of Wiki). 
+CamelCase-based 
+wikis 
 
-Aenean tincidunt ante ac dolor commodo condimentum. Morbi mollis vulputate luctus. Sed at dui vel lacus scelerisque faucibus. In bibendum posuere odio, a vehicula eros eleifend in. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus vitae erat sapien. Aenean nec fringilla nisl. Pellentesque sit amet euismod nibh, at egestas purus. Ut id bibendum velit. Sed quis volutpat dolor. Quisque blandit ac lectus nec bibendum. Nulla sagittis maximus congue. Phasellus aliquam blandit magna. Donec eget venenatis eros. Integer sollicitudin elementum eleifend. Donec elementum ipsum quis nulla semper egestas.
 
-Suspendisse scelerisque urna eu sem gravida, sollicitudin condimentum orci maximus. Cras sit amet molestie neque. Nunc imperdiet dolor eu massa euismod gravida. Nunc nec ex pretium, maximus metus et, dignissim justo. Proin at ultrices libero. Nunc ac elementum orci. Integer ut felis ac eros bibendum ultrices ultricies quis purus. Mauris nunc sapien, eleifend sit amet risus consectetur, pharetra laoreet purus. In hendrerit sodales pellentesque. In sit amet mi vel velit commodo mattis.
+are 
 
-Aliquam id tellus ullamcorper, ultrices augue porttitor, vulputate metus. Integer vestibulum commodo lacus sit amet pulvinar. Integer nibh ligula, lacinia sit amet imperdiet ac, porttitor a ligula. Ut porttitor et diam id bibendum. Nunc lectus nisl, sodales et fermentum et, posuere non lectus. Ut in odio urna. Nullam rhoncus imperdiet odio, ut sollicitudin justo. Praesent tincidunt dapibus ante, eu dictum quam molestie laoreet. Nulla egestas porttitor felis non facilisis. Quisque nec diam luctus, efficitur dolor nec, ornare nisl. 
-<THE END>
+instantly recognizable because they have many links with names such as TableOfContents and BeginnerQuestions.
+It is possible
+For example, RichardWagner should be rendered as Richard Wagner, whereas PopularMusic should be rendered as popular music. 
+There is no easy way to determine which 
+capital letters should remain capitalized. 
+As a result, many wikis now have free
+linking
+
+using 
+
+brackets, and some disable CamelCase by 
+
+fault.
