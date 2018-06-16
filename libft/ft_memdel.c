@@ -6,7 +6,7 @@
 /*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 13:22:46 by msefako           #+#    #+#             */
-/*   Updated: 2018/06/01 15:43:34 by msefako          ###   ########.fr       */
+/*   Updated: 2018/06/12 11:34:15 by msefako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_memdel(void **ap)
 {
-	free(*ap);
-	ft_bzero(ap, sizeof(ap));
+	if (ap)
+	{
+		free(*ap);
+		ft_bzero(ap, sizeof(ap));
+	}
 }

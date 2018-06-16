@@ -6,7 +6,7 @@
 /*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 13:28:09 by msefako           #+#    #+#             */
-/*   Updated: 2018/06/16 11:08:44 by msefako          ###   ########.fr       */
+/*   Updated: 2018/06/16 09:59:56 by msefako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			get_next_line(const int fd, char **line)
 	char	*buff;
 	char	*str;
 	int		str_sz;
-	int		i;
+	int		i, j;
 
 	buff = ft_memalloc(BUFF_SIZE);
 	str_sz = BUFF_SIZE;
@@ -50,15 +50,12 @@ int			get_next_line(const int fd, char **line)
 		{
 			if (buff[i] == '\n' )
 			{
-				buff[i] = '\0';
-				str = strndup(buff, i);
-				ft_strjoin(*line, str);
+			//	buff[i] = '\0';
 				ft_putchar('\n');
 			}
 			i++;
 		}
-//		ft_strncat(*line, buff, i - 1);
-		printf("%s", *line);
+		printf("%s", buff);
 //		ft_putstr(*line);
 	}
 	ft_putchar('\n');

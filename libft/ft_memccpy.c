@@ -6,7 +6,7 @@
 /*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:52:50 by msefako           #+#    #+#             */
-/*   Updated: 2018/05/31 16:52:56 by msefako          ###   ########.fr       */
+/*   Updated: 2018/06/15 16:25:19 by msefako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 #include <stdio.h>
 
-void	*ft_memccpy(void *dest, const void *src, int character, size_t size)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	size_t					counter;
 	const unsigned char		*source;
@@ -23,10 +23,10 @@ void	*ft_memccpy(void *dest, const void *src, int character, size_t size)
 	counter = 0;
 	source = src;
 	destination = dest;
-	while (counter < size)
+	while (counter < n)
 	{
 		destination[counter] = source[counter];
-		if (source[counter] == (unsigned char)character)
+		if (source[counter] == (unsigned char)c)
 			return (dest + counter + 1);
 		counter++;
 	}
