@@ -13,27 +13,24 @@
 #include "./libft/includes/libft.h"
 #include "get_next_line.h"
 #include <fcntl.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 
-int	ft_stock2line(char **stock, char **line)
+int	ft_find_brk(char **brk_ln, char **line)
 {
 	int len;
 
-	if (ft_strchr(*stock, '\n') != NULL)
+	if (ft_strchr(*brk_ln, '\n') != NULL)
 	{
-		len = ft_strchr(*stock, '\n') - *stock;
-		line[0] = ft_strsub(*stock, 0, len);
-		*stock = ft_strchr(*stock, '\n') + 1;
+		len = ft_strchr(*brk_ln, '\n') - *brk_ln;
+		line[0] = ft_strsub(*brk_ln, 0, len);
+		*brk_ln = ft_strchr(*brk_ln, '\n') + 1;
 		return (1);
 	}
-	line[0] = ft_strdup(*stock);
-	*stock = NULL;
+	line[0] = ft_strdup(*brk_ln);
+	*brk_ln = NULL;
 	return (0);
 }
 
-int	read_f(char **line, const int fd, char **stock, char *str)
+int	ft_read_fl(char **line, const int fd, char **brk_ln, char *str)
 {
 	char	*tmp;
 	int		len;
@@ -51,7 +48,7 @@ int	read_f(char **line, const int fd, char **stock, char *str)
 		if (ft_strchr(line[0], '\n'))
 		{
 			len = ft_strchr(line[0], '\n') - line[0];
-			*stock = ft_strdup(ft_strchr(line[0], '\n') + 1);
+			*brk_ln = ft_strdup(ft_strchr(line[0], '\n') + 1);
 			tmp = ft_strdup(line[0]);
 			free(line[0]);
 			line[0] = ft_strsub(tmp, 0, len);
@@ -65,17 +62,17 @@ int	read_f(char **line, const int fd, char **stock, char *str)
 int	get_next_line(const int fd, char **line)
 {
 	int			ret;
-	static char	*stock = NULL;
 	char		*str;
+	static char	*brk_ln = NULL;
 
 	if (line == NULL || fd < 0 || BUFF_SIZE < 1)
 		return (-1);
 	line[0] = ft_strnew(BUFF_SIZE);
-	if (stock != NULL)
-		if (ft_stock2line(&stock, &line[0]))
+	if (brk_ln != NULL)
+		if (ft_find_brk(&brk_ln, &line[0]))
 			return (1);
 	str = ft_strnew(BUFF_SIZE);
-	if ((ret = read_f(&line[0], fd, &stock, str)) == -1)
+	if ((ret = ft_read_fl(&line[0], fd, &brk_ln, str)) == -1)
 		return (-1);
 	free(str);
 	if (ret == 0 && ft_strlen(line[0]) == 0)
