@@ -5,75 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 15:54:45 by msefako           #+#    #+#             */
-/*   Updated: 2018/06/19 15:12:32 by msefako          ###   ########.fr       */
+/*   Created: 2018/06/25 15:25:43 by msefako           #+#    #+#             */
+/*   Updated: 2018/06/25 16:03:16 by msefako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_find_brk(char **brk_ln, char **line)
+int		end(char *buf)
 {
-	int len;
+	int i;
 
-	if (ft_strchr(*brk_ln, '\n') != NULL)
-	{
-		len = ft_strchr(*brk_ln, '\n') - *brk_ln;
-		line[0] = ft_strsub(*brk_ln, 0, len);
-		*brk_ln = ft_strchr(*brk_ln, '\n') + 1;
+	i = 0;
+	while (buf[i] && buf[i] != '\n')
+		i++;
+	if (buf[i] == '\n')
 		return (1);
-	}
-	line[0] = ft_strdup(*brk_ln);
-	*brk_ln = NULL;
 	return (0);
 }
 
-int	ft_read_fl(char **line, const int fd, char **brk_ln, char *str)
+int		get_line(const int fd, char *buf, char *strs[fd])
 {
-	char	*tmp;
-	int		len;
-	int		ret;
-
-	while ((ret = read(fd, str, BUFF_SIZE)))
+	int			rn;
+	char		*tmp;
+	
+	while ((end(buf) != 1) && ((rn = read(fd, buf, BUFF_SIZE)) > 0))
 	{
-		if (ret == -1)
-			return (ret);
-		str[ret] = '\0';
-		tmp = ft_strdup(line[0]);
-		free(line[0]);
-		line[0] = ft_strjoin(tmp, str);
-		free(tmp);
-		if (ft_strchr(line[0], '\n'))
-		{
-			len = ft_strchr(line[0], '\n') - line[0];
-			*brk_ln = ft_strdup(ft_strchr(line[0], '\n') + 1);
-			tmp = ft_strdup(line[0]);
-			free(line[0]);
-			line[0] = ft_strsub(tmp, 0, len);
-			free(tmp);
-			break ;
-		}
+		buf[rn] = '\0';
+		tmp = strs[fd];
+		strs[fd] = ft_strjoin(tmp, buf);
+		ft_strdel(&tmp);
 	}
-	return (ret);
+	ft_strdel(&buf);
+	if (rn < 0)
+		return (-1);
+	return (1);
 }
 
-int	get_next_line(const int fd, char **line)
+int		get_next_line(const int fd, char **line)
 {
-	int			ret;
+	int			rn;
+	static char	*strs[2147483647];
+	char		*buf;
 	char		*str;
-	static char	*brk_ln = NULL;
-
-	if (line == NULL || fd < 0 || BUFF_SIZE < 1)
+	char		*tmp;
+	
+	if (fd < 0 || !line || BUFF_SIZE < 1)
 		return (-1);
-	line[0] = ft_strnew(BUFF_SIZE);
-	if (brk_ln != NULL)
-		if (ft_find_brk(&brk_ln, &line[0]))
-			return (1);
-	str = ft_strnew(BUFF_SIZE);
-	if ((ret = ft_read_fl(&line[0], fd, &brk_ln, str)) == -1)
+	buf = ft_strnew(BUFF_SIZE);
+	if (!strs[fd])
+		strs[fd] = ft_strnew(0);
+	if ((rn = get_line(fd, buf, strs)) == -1)
 		return (-1);
-	free(str);
-	if (ret == 0 && ft_strlen(line[0]) == 0)
-		return (0);
-	return (1);
+	if ((str = ft_strchr(strs[fd], '\n')))
+	{
+		*line = ft_strsub(strs[fd], 0, str - strs[fd]);
+		tmp = strs[fd];
+		strs[fd] = ft_strdup(str + 1);
+		ft_strdel(&tmp);
+		return (1);
+	}
+	*line = ft_strdup(strs[fd]);
+	ft_strdel(&strs[fd]);
+	return (ft_strlen(*line) > 0 ? 1 : 0);
 }
